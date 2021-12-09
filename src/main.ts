@@ -6,7 +6,7 @@ import { interests } from './interests';
 
 const width = 954;
 const radius = width / 2;
-const x = -width / 2;
+const x = -width / 40;
 const y = -width / 2;
 
 const data = d3
@@ -23,7 +23,7 @@ const svg = d3
   .append('svg')
   .attr('width', '100%')
   .attr('height', '100%')
-  .attr('viewBox', `${x} ${y} ${width} ${width}`);
+  .attr('viewBox', `${x} ${y} ${2 * Math.PI} ${width}`);
 
 const radialLink = d3
   .linkRadial()
