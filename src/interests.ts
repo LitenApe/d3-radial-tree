@@ -1,93 +1,131 @@
-const frontend = [
-  { name: 'ReactJS' },
-  { name: 'D3js' },
-  { name: 'Accessibility' },
-  { name: 'Component Libraries' },
-  { name: 'VueJS' },
-  { name: 'Svelte' },
-  { name: 'Animation' },
-  { name: 'Redux' },
-];
-
-const sport = [
-  { name: 'Running' },
-  { name: 'Cycling' },
-  { name: 'Hiking' },
-  { name: 'Squash' },
-  { name: 'Football' },
-  { name: 'Volleyball' },
-  { name: 'Climbing' },
-];
-
-const hobby = [
-  { name: 'Gaming' },
-  { name: 'Photography' },
-  { name: 'Puzzles' },
-  { name: 'Guitar' },
-  { name: 'Finance' },
-];
-
-const language = [
-  { name: 'TypeScript' },
-  { name: 'Dart' },
-  { name: 'Kotlin' },
-  { name: 'Rust' },
-  { name: 'Java' },
-  { name: 'JavaScript' },
-  { name: 'Python' },
-  { name: 'Bash' },
-  { name: 'C' },
-];
-
-const social = [
-  { name: 'Github' },
-  { name: 'Facebook' },
-  { name: 'Instagram' },
-  { name: 'Flickr' },
-  { name: 'Snapchat' },
-];
-
-const lies = [
-  { name: 'More' },
-  { name: 'lies' },
-  { name: 'too' },
-  { name: 'fill' },
-  { name: 'the' },
-  { name: 'graph' },
-];
-
-export interface Relation {
-  name: string;
-  parent: string;
-}
-
-export const interests: Array<Relation> = [
-  { name: 'LitenApe', parent: '' },
-
-  // Development
-  { name: 'Development', parent: 'LitenApe' },
-
-  // Frontend
-  { name: 'Frontend', parent: 'Development' },
-  ...frontend.map((value) => ({ ...value, parent: 'Frontend' })),
-
-  // Programming Language
-  { name: 'Programming Language', parent: 'Development' },
-  ...language.map((value) => ({ ...value, parent: 'Programming Language' })),
-
-  // Sport
-  { name: 'Sport', parent: 'LitenApe' },
-  ...sport.map((value) => ({ ...value, parent: 'Sport' })),
-
-  // Hobby
-  { name: 'Hobby', parent: 'LitenApe' },
-  ...hobby.map((value) => ({ ...value, parent: 'Hobby' })),
-
-  // Social Media
-  { name: 'Social Media', parent: 'LitenApe' },
-  ...social.map((value) => ({ ...value, parent: 'Social Media' })),
-
-  // lies
-  { name: 'Lies', parent: 'LitenApe' },
-  ...lies.map((value) => ({ ...value, parent: 'Lies' })),
-];
+export const interests = {
+  name: 'LitenApe',
+  children: [
+    {
+      name: 'Development',
+      children: [
+        {
+          name: 'Frontend',
+          children: [
+            { name: 'ReactJS' },
+            { name: 'D3js' },
+            { name: 'Accessibility' },
+            { name: 'Component Libraries' },
+            { name: 'VueJS' },
+            { name: 'Svelte' },
+            { name: 'Framer Motion' },
+            { name: 'Redux' },
+            { name: 'Redux Toolkit' },
+            { name: 'Redux Saga' },
+            { name: 'Formik' },
+            { name: 'Yup' },
+            { name: 'Webpack' },
+            { name: 'ViteJS' },
+            { name: 'Storybook' },
+            { name: 'NextJS' },
+            { name: 'GatsbyJS' },
+            { name: 'Jest' },
+            { name: 'Testing Library' },
+            { name: 'MSW' },
+          ],
+        },
+        {
+          name: 'Backend',
+          children: [
+            { name: 'Spring' },
+            { name: 'Django' },
+            { name: 'Express' },
+            { name: 'Fastify' },
+            { name: 'Firebase' },
+          ],
+        },
+        {
+          name: 'Language',
+          children: [
+            { name: 'TypeScript' },
+            { name: 'Dart' },
+            { name: 'Kotlin' },
+            { name: 'Rust' },
+            { name: 'Java' },
+            { name: 'JavaScript' },
+            { name: 'Python' },
+            { name: 'Bash' },
+            { name: 'C' },
+            { name: 'PowerShell' },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'Sport',
+      children: [
+        {
+          name: 'Running',
+          children: [{ name: '5K' }, { name: '10K' }, { name: 'Half Maraton' }],
+        },
+        { name: 'Cycling' },
+        { name: 'Hiking' },
+        { name: 'Squash' },
+        { name: 'Football' },
+        { name: 'Volleyball' },
+        { name: 'Climbing' },
+        { name: 'Cross Country Skiing' },
+      ],
+    },
+    {
+      name: 'Hobby',
+      children: [
+        {
+          name: 'Gaming',
+          children: [
+            { name: 'Horizon Zero Dawn' },
+            { name: 'Path of Exile' },
+            { name: 'Diablo 3' },
+            { name: 'Call of Duty: Modern Warfare' },
+            { name: 'Minecraft' },
+            { name: 'Smite' },
+            { name: 'Turing Complete' },
+          ],
+        },
+        {
+          name: 'Photography',
+          children: [
+            { name: 'Nature' },
+            { name: 'City' },
+            { name: 'Architecture' },
+          ],
+        },
+        { name: 'Puzzles' },
+        { name: 'Guitar' },
+        { name: 'Finance' },
+      ],
+    },
+    {
+      name: 'Social Media',
+      children: [
+        { name: 'Github' },
+        { name: 'Facebook' },
+        { name: 'Instagram' },
+        { name: 'Flickr' },
+        { name: 'Snapchat' },
+        { name: 'LinkedIn' },
+        { name: 'Garmin Connect' },
+        { name: 'Strava' },
+        { name: 'Reddit' },
+      ],
+    },
+    {
+      name: 'Travel',
+      children: [
+        { name: 'United Kingdom' },
+        { name: 'France' },
+        { name: 'Vietnam' },
+        { name: 'United States of America' },
+        { name: 'Czech Republic' },
+        { name: 'Sweden' },
+        { name: 'Austria' },
+        { name: 'Slovakia' },
+      ],
+    },
+  ],
+};

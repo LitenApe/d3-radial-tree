@@ -2,7 +2,7 @@ import './style.css';
 
 import * as d3 from 'd3';
 
-import { Relation, interests } from './interests';
+import { interests } from './interests';
 
 const width = 954;
 const radius = width / 2;
@@ -10,20 +10,19 @@ const x = -width / 2;
 const y = -width / 2;
 
 const data = d3
-  .stratify<Relation>()
-  .id((d) => d.name)
-  .parentId((d) => d.parent)(interests);
+  .hierarchy<any>(interests)
+  .sort((a, b) => d3.ascending(a.data.name, b.data.name));
 
 const root = d3
-  .tree<Relation>()
+  .tree<any>()
   .size([2 * Math.PI, radius])
   .separation((a, b) => (a.parent == b.parent ? 1 : 2) / a.depth)(data);
-
-root.sort((a, b) => d3.ascending(a.data.name, b.data.name));
 
 const svg = d3
   .select('#app')
   .append('svg')
+  .attr('width', '100%')
+  .attr('height', '100%')
   .attr('viewBox', `${x} ${y} ${width} ${width}`);
 
 const radialLink = d3
